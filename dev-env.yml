@@ -9,6 +9,16 @@
       homebrew:
         update_homebrew: yes
 
+    - name: INSTALL PYTHON
+      homebrew:
+        name: python
+
+    - name: SET PYTHON ALIAS
+      shell: echo "alias python=/usr/local/bin/python3" >> ~/.zshrc
+    
+    - name: SET PIP ALIAS
+      shell: echo "alias pip=/usr/local/bin/pip3" >> ~/.zshrc
+
     - name: INSTALL GIT
       homebrew:
         name: git

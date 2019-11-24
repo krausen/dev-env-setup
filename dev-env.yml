@@ -1,0 +1,36 @@
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: INSTALL HOMEBREW
+      shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+    - name: UPDATE HOMEBREW
+      homebrew:
+        update_homebrew: yes
+
+    - name: INSTALL GIT
+      homebrew:
+        name: git
+        state: latest
+
+    - name: INSTALL DOCKER
+      homebrew_cask:
+        name: docker
+        state: latest
+
+    - name: INSTALL SPOTIFY
+      homebrew_cask:
+        name: spotify
+        state: latest
+
+    - name: INSTALL VS CODE
+      homebrew_cask:
+        name: visual-studio-code
+        state: latest
+
+    - name: INSTALL PYTHON EXTENSION
+      shell: code --install-extension ms-python.python
+    
+    - name: INSTALL CODE COVERAGE EXTENSION
+      shell: code --install-extension markis.code-coverage

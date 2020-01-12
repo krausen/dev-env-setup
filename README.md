@@ -1,8 +1,20 @@
 # dev-env-setup
 Set up my development environment with this Ansible playbook
 
-## What is left to do?
-  - [ ] Install python3
-  - [ ] Install Magnet from App Store
-  - [ ] Install Command Line Tools
-  - [ ] Write a proper README :)
+## Prerequisites
+  - Python >= 2
+  - MacOS >= 10.15
+  - Signed in to Mac App Store
+
+## How to?
+Install ansible
+
+```shell
+pip install ansible
+```
+
+Run Ansible playbook (Make sure that you are signed in to Mac App Store)
+
+```zsh
+ansible-playbook dev-env.yml
+```

@@ -2,50 +2,59 @@
   connection: local
 
   tasks:
-    - name: INSTALL HOMEBREW
-      shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+     - name: INSTALL HOMEBREW
+       shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-    - name: UPDATE HOMEBREW
-      homebrew:
-        update_homebrew: yes
+     - name: UPDATE HOMEBREW
+       homebrew:
+         update_homebrew: yes
 
-    - name: INSTALL PYTHON
-      homebrew:
-        name: python
+     - name: INSTALL PYTHON
+       homebrew:
+         name: python
 
-    - name: SET PYTHON ALIAS
-      shell: echo "alias python=/usr/local/bin/python3" >> ~/.zshrc
+     - name: INSTALL GIT
+       homebrew:
+         name: git
+         state: latest
+
+     - name: INSTALL OH MY ZSH
+       # Dependent on git
+       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+     - name: INSTALL DOCKER
+       homebrew_cask:
+         name: docker
+         state: latest
     
-    - name: SET PIP ALIAS
-      shell: echo "alias pip=/usr/local/bin/pip3" >> ~/.zshrc
+     - name: INSTALL GOOGLE CHROME
+       homebrew_cask:
+         name: google-chrome
+         state: latest
 
-    - name: INSTALL GIT
-      homebrew:
-        name: git
-        state: latest
+     - name: INSTALL SPOTIFY
+       homebrew_cask:
+         name: spotify
+         state: latest
 
-    - name: INSTALL DOCKER
-      homebrew_cask:
-        name: docker
-        state: latest
+     - name: INSTALL VS CODE
+       homebrew_cask:
+         name: visual-studio-code
+         state: latest
 
-    - name: INSTALL SPOTIFY
-      homebrew_cask:
-        name: spotify
-        state: latest
-
-    - name: INSTALL VS CODE
-      homebrew_cask:
-        name: visual-studio-code
-        state: latest
-
-    - name: INSTALL PYTHON EXTENSION
-      shell: code --install-extension ms-python.python
+     - name: INSTALL PYTHON EXTENSION
+       shell: code --install-extension ms-python.python
     
-    - name: INSTALL CODE COVERAGE EXTENSION
-      shell: code --install-extension markis.code-coverage
+     - name: INSTALL CODE COVERAGE EXTENSION
+       shell: code --install-extension markis.code-coverage
 
-    - name: INSTALL MAGNET
-      # This task requires you to be manually log in to Mac App Store
-      # 441258766 is the product identifier for Magnet in MAS
-      shell: mas install 441258766
+     - name: INSTALL MAGNET
+       # This task requires you to be manually log in to Mac App Store
+       # 441258766 is the product identifier for Magnet in MAS
+       shell: mas install 441258766
+     
+     - name: Copy .zshrc
+       copy:
+         src: ./.zshrc
+         dest: ~/.zshrc
+         mode: '0644'

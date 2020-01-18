@@ -12,11 +12,12 @@
      - name: INSTALL PYTHON
        homebrew:
          name: python
+         state: present
 
      - name: INSTALL GIT
        homebrew:
          name: git
-         state: latest
+         state: present
 
      - name: INSTALL OH MY ZSH
        # Dependent on git
@@ -25,22 +26,22 @@
      - name: INSTALL DOCKER
        homebrew_cask:
          name: docker
-         state: latest
+         state: present
     
      - name: INSTALL GOOGLE CHROME
        homebrew_cask:
          name: google-chrome
-         state: latest
+         state: present
 
      - name: INSTALL SPOTIFY
        homebrew_cask:
          name: spotify
-         state: latest
+         state: present
 
      - name: INSTALL VS CODE
        homebrew_cask:
          name: visual-studio-code
-         state: latest
+         state: present
 
      - name: INSTALL PYTHON EXTENSION
        shell: code --install-extension ms-python.python
@@ -53,8 +54,13 @@
        # 441258766 is the product identifier for Magnet in MAS
        shell: mas install 441258766
      
-     - name: Copy .zshrc
+     - name: COPY .zshrc
        copy:
          src: ./.zshrc
          dest: ~/.zshrc
          mode: '0644'
+     
+     - name: INSTALL VLC
+       homebrew_cask:
+          name: vlc
+          state: present

@@ -64,3 +64,8 @@
        homebrew_cask:
           name: vlc
           state: present
+    
+     - name: INSTALL SLACK
+       homebrew_cask:
+          name: slack
+          state: present

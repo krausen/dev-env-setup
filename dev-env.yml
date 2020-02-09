@@ -4,68 +4,87 @@
   tasks:
      - name: INSTALL HOMEBREW
        shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+       tags: base
 
      - name: UPDATE HOMEBREW
        homebrew:
          update_homebrew: yes
-
-     - name: INSTALL PYTHON
-       homebrew:
-         name: python
-         state: present
+       tags: base
 
      - name: INSTALL GIT
        homebrew:
          name: git
          state: present
+       tags: python
 
-     - name: INSTALL OH MY ZSH
-       # Dependent on git
-       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-     - name: INSTALL DOCKER
-       homebrew_cask:
-         name: docker
-         state: present
+     #- name: INSTALL OH MY ZSH
+     #  # Dependent on git
+     #  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+     #  tags: base
     
-     - name: INSTALL GOOGLE CHROME
-       homebrew_cask:
-         name: google-chrome
-         state: present
-
-     - name: INSTALL SPOTIFY
-       homebrew_cask:
-         name: spotify
-         state: present
-
-     - name: INSTALL VS CODE
-       homebrew_cask:
-         name: visual-studio-code
-         state: present
-
-     - name: INSTALL PYTHON EXTENSION
-       shell: code --install-extension ms-python.python
-    
-     - name: INSTALL CODE COVERAGE EXTENSION
-       shell: code --install-extension markis.code-coverage
-
-     - name: INSTALL MAGNET
-       # This task requires you to be manually log in to Mac App Store
-       # 441258766 is the product identifier for Magnet in MAS
-       shell: mas install 441258766
-     
      - name: COPY .zshrc
        copy:
          src: ./.zshrc
          dest: ~/.zshrc
          mode: '0644'
-     
-     - name: INSTALL VLC
+       tags: base
+
+     - name: INSTALL DOCKER
        homebrew_cask:
-          name: vlc
-          state: present
-    
+         name: docker
+         state: present
+       tags: base
+
+     - name: INSTALL GOOGLE CHROME
+       homebrew_cask:
+         name: google-chrome
+         state: present
+       tags: base
+
+     - name: INSTALL SPOTIFY
+       homebrew_cask:
+         name: spotify
+         state: present
+       tags: base
+
+     - name: INSTALL VS CODE
+       homebrew_cask:
+         name: visual-studio-code
+         state: present
+       tags: base
+     
+     - name: INSTALL MAGNET
+       # This task requires you to be manually log in to Mac App Store
+       # 441258766 is the product identifier for Magnet in MAS
+       shell: mas install 441258766
+       tags: base
+
      - name: INSTALL SLACK
        homebrew_cask:
           name: slack
           state: present
+       tags: base
+
+     - name: INSTALL PYTHON
+       homebrew:
+         name: python
+         state: present
+       tags: python
+
+     - name: INSTALL PYTHON EXTENSION
+       shell: code --install-extension ms-python.python
+       tags: python
+    
+     - name: INSTALL CODE COVERAGE EXTENSION
+       shell: code --install-extension markis.code-coverage
+       tags: python
+
+     - name: INSTALL KITE ENGINE
+       homebrew_cask:
+         name: kite
+         state: present
+       tags: python
+
+     - name: INSTALL KITE EXTENSION
+       shell: code --install-extension kiteco.kite
+       tags: python

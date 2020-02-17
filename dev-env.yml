@@ -3,59 +3,65 @@
 
   tasks:
 
-     - name: CREATE PROJECT DIR
-       file:
-         path: ~/projects
-         state: directory
+    - name: CREATE PROJECT DIR
+      file:
+        path: ~/projects
+        state: directory
 
-     - name: INSTALL HOMEBREW
-       shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-       tags: base
+    - name: INSTALL HOMEBREW
+      shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      tags: base
 
-     - name: UPDATE HOMEBREW
-       homebrew:
-         update_homebrew: yes
-       tags: base
+    - name: UPDATE HOMEBREW
+      homebrew:
+        update_homebrew: yes
+      tags: base
 
-     - name: INSTALL GIT
-       homebrew:
-         name: git
-         state: present
-       tags: python
+    - name: INSTALL GIT
+      homebrew:
+        name: git
+        state: present
+      tags: python
 
-     - name: INSTALL OH MY ZSH
-       # Dependent on git
-       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-       tags: base
+    - name: INSTALL OH MY ZSH
+      # Dependent on git
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      tags: base
     
-     - name: COPY .zshrc
-       copy:
-         src: ./.zshrc
-         dest: ~/.zshrc
-         mode: '0644'
-       tags: base
+    - name: COPY .zshrc
+      copy:
+        src: ./.zshrc
+        dest: ~/.zshrc
+        mode: '0644'
+      tags: base
 
-     - name: INSTALL DOCKER
-       homebrew_cask:
-         name: docker
-         state: present
-       tags: base
+    - name: INSTALL DOCKER
+      homebrew_cask:
+        name: docker
+        state: present
+      tags: base
 
-     - name: INSTALL GOOGLE CHROME
-       homebrew_cask:
-         name: google-chrome
-         state: present
-       tags: base
+    - name: INSTALL GOOGLE CHROME
+      homebrew_cask:
+        name: google-chrome
+        state: present
+      tags: base
 
-     - name: INSTALL SPOTIFY
-       homebrew_cask:
-         name: spotify
-         state: present
-       tags: base
+    - name: INSTALL SPOTIFY
+      homebrew_cask:
+        name: spotify
+        state: present
+      tags: base
 
-     - name: INSTALL VS CODE
-       homebrew_cask:
-         name: visual-studio-code
+    - name: INSTALL VS CODE
+      homebrew_cask:
+        name: visual-studio-code
+        state: present
+      tags: base
+
+     - name: INSTALL MAS
+       homebrew:
+         name: mas
          state: present
        tags: base
      

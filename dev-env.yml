@@ -2,6 +2,12 @@
   connection: local
 
   tasks:
+
+     - name: CREATE PROJECT DIR
+       file:
+         path: ~/projects
+         state: directory
+
      - name: INSTALL HOMEBREW
        shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
        tags: base
@@ -17,10 +23,10 @@
          state: present
        tags: python
 
-     #- name: INSTALL OH MY ZSH
-     #  # Dependent on git
-     #  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-     #  tags: base
+     - name: INSTALL OH MY ZSH
+       # Dependent on git
+       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+       tags: base
     
      - name: COPY .zshrc
        copy:

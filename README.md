@@ -7,11 +7,24 @@ Set up my development environment with this Ansible playbook
   - Signed in to Mac App Store
 
 ## How to?
+
+From a clean environment download this [repo](https://github.com/krausen/dev-env-setup/archive/master.zip).
+
+Install pip
+
+```shell
+
+easy_install pip
+```
+
 Install ansible
 
 ```shell
-pip install ansible
+sudo pip install Ansible
 ```
+
+**Note!**
+Sudo is necessary for Ansible to be installed globally, I have not been able to get it working without it.
 
 Run Ansible playbook (Make sure that you are signed in to Mac App Store)
 

@@ -100,3 +100,15 @@
      - name: INSTALL KITE EXTENSION
        shell: code --install-extension kiteco.kite
        tags: python
+  
+     - name: INSTALL JAVA
+       homebrew_cask:
+         name: java
+         state: present
+       tags: java
+     
+     - name: INSTALL MAVEN
+       homebrew:
+         name: maven
+         state: present
+       tags: java

@@ -20,7 +20,7 @@
     - name: INSTALL GIT
       homebrew:
         name: git
-        state: present
+        state: latest
       tags: python
 
     - name: INSTALL OH MY ZSH
@@ -38,13 +38,13 @@
     - name: INSTALL DOCKER
       homebrew_cask:
         name: docker
-        state: present
+        state: latest
       tags: base
 
     - name: INSTALL GOOGLE CHROME
       homebrew_cask:
         name: google-chrome
-        state: present
+        state: latest
       tags: base
 
     - name: INSTALL SPOTIFY
@@ -90,25 +90,15 @@
      - name: INSTALL CODE COVERAGE EXTENSION
        shell: code --install-extension markis.code-coverage
        tags: python
-
-     - name: INSTALL KITE ENGINE
-       homebrew_cask:
-         name: kite
-         state: present
-       tags: python
-
-     - name: INSTALL KITE EXTENSION
-       shell: code --install-extension kiteco.kite
-       tags: python
   
      - name: INSTALL JAVA
        homebrew_cask:
          name: java
-         state: present
+         state: latest
        tags: java
      
      - name: INSTALL MAVEN
        homebrew:
          name: maven
-         state: present
+         state: latest
        tags: java

@@ -1,5 +1,5 @@
 # dev-env-setup
-Set up my development environment with this Ansible playbook
+Set up a development machine with this Ansible playbook
 
 ## Prerequisites
   - Python >= 2
